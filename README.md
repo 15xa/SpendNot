@@ -25,7 +25,7 @@ QR Scanning: Integrated browser-based solution
 Getting Started
 Clone the Repository:
 
-git clone https://github.com/yourusername/spendNot.git
+git clone https://github.com/15xa/SpendNot
 cd spendNot
 Install Dependencies:
 
