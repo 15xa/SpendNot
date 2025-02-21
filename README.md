@@ -12,7 +12,7 @@ Manually type in the amount you wish to pay—just like a regular UPI transactio
 Budget Verification & Payment Flow:
 
 Behind the scenes, spendNot checks your entered amount against your remaining budget for that category (saved via your user account).
-If within budget: The app generates a UPI payment link (formatted as upi://pay?pa=...) with the recipient and amount pre-filled and seamlessly redirects you to your UPI app for payment (all you need is to enter your UPI MPIN).
+If within budget: The app generates a UPI payment link with the recipient and amount pre-filled and seamlessly redirects you to your UPI app for payment (all you need is to enter your UPI MPIN).
 If the payment would exceed your budget: The app deducts habit points as a gentle penalty and displays a pop-up warning—preventing the payment and helping you stick to your spending limits.
 Tech Stack
 Frontend: React
@@ -33,7 +33,7 @@ Install Dependencies:
 npm install
 cd client && npm install && cd ..
 Configure Environment Variables:
-Create a .env file in the root directory with your configurations (e.g., MONGO_URI, PORT).
+Create a .env file in the root directory with your configurations
 
 Run the Application:
 
