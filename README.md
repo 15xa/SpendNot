@@ -1,5 +1,3 @@
-SpendNot makes paying with UPI seamless while helping you stay on budget. Built with the MERN stack, spendNot streamlines your UPI payment experience by automatically pre-filling the recipient and amount details based on your input and personalized spending limits.
-
 Problem statement - Most expense tracking apps only provide after-the-fact spending analysis, leaving you free to overspend without any immediate consequences. They help you understand your financial habits but don’t actively prevent you from going over budget.
 
 Solution - SpendNot changes that by proactively enforcing personalized spending limits through a gamified system. If you try to exceed your set limits, you lose habit points—but you can still complete the transaction if you choose to loose double points. This approach not only keeps your payments seamless but also helps you build lasting financial discipline, turning every transaction into a step toward smarter spending.
