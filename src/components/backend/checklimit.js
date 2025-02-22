@@ -2,10 +2,10 @@ import express from "express";
 import cors from "cors";
 import jwt from "jsonwebtoken";
 import connectDB, { TransactionModel, CategoryLimitModel, UserModel } from "./db.js";
+import 'dotenv/config'
 
 const app = express();
 const SECRET_KEY = "secret123";
-
 
 app.use(express.json());
 app.use(cors({
