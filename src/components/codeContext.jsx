@@ -3,6 +3,17 @@ import { createContext, useContext, useState } from "react";
 const CodeDataContext = createContext();
 const ScanningContext = createContext();
 const ErrorContext = createContext();
+const UsersignContext = createContext();
+
+export const UsersignProvider = ({children}) => {
+    const [UsersignedIn, setUsersignedIn] = useState(false);
+
+    return(
+        <UsersignContext.Provider value={{UsersignedIn, setUsersignedIn}}>
+            {children}
+        </UsersignContext.Provider>
+    )
+};
 
 export const ScanningProvider = ({ children }) => {
     const [scanning, setScanning] = useState(false);
@@ -37,3 +48,4 @@ export const CodeDataProvider = ({ children }) => {
 export const useScanning = () => useContext(ScanningContext);
 export const useError = () => useContext(ErrorContext);
 export const useCodeData = () => useContext(CodeDataContext);
+export const useUserSign = () => useContext(UsersignContext)

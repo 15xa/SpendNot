@@ -33,7 +33,7 @@ const UserSchema = new mongoose.Schema({
         required:true,
     },
     points:{type: Number, default:400}
-})
+},  { collection: "users" })
 
 export const TransactionModel = mongoose.model("Transaction", TransactionSchema);
 export const CategoryLimitModel = mongoose.model("CategoryLimit", CategoryLimitSchema);
