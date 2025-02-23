@@ -1,5 +1,6 @@
 # Logs
 config.js
+.env
 logs
 *.log
 npm-debug.log*
