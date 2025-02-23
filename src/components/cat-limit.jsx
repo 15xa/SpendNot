@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { REACT_APP_FLINK } from "./config";
 
-const ModifyMenu = () => {
+const ModifyMenu = ({close}) => {
   const [categories, setCategories] = useState([]);
   const [categoryLimits, setCategoryLimits] = useState([]);
   const [newCategory, setNewCategory] = useState("");
@@ -138,6 +138,7 @@ const ModifyMenu = () => {
 
   return (
     <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6">
+      <div className="text-red-600 font-medium text-2xl cursor-pointer" onClick={close}>X</div>
       <h2 className="text-2xl font-bold text-center mb-4">Modify Category Limits</h2>
       
       {message && (
