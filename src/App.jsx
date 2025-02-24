@@ -1,5 +1,6 @@
 import QRScanner from "./components/qrscan";
 import Auth from "./components/signin";
+import Analytics from "./components/analytics";
 import { useUserSign, UsersignProvider } from "./components/codeContext";
 import { ScanningProvider, ErrorProvider, CodeDataProvider } from "./components/codeContext";
 import ModifyMenu from "./components/cat-limit";
@@ -11,41 +12,73 @@ export const handleLogout = () => {
   window.location.href = "/spendnot/";
 };
 
-const AppContent = () => {
-  const [isModifyOpen, setIsModifyOpen] = useState(false);
-  const { UsersignedIn } = useUserSign();
-
-  return (
-    <>
-      {isModifyOpen ? (
-        <ModifyMenu close={() => setIsModifyOpen(false)} />
-      ) : UsersignedIn ? (
-        <QRScanner openModify={() => setIsModifyOpen(true)} />
-      ) : (
-        <Auth />
-      )}
-    </>
-  );
-};
-
 function App() {
+  const [isModifyOpen, setModifyOpen] = useState(false);
+  const [showAnalytics, setShowAnalytics] = useState(false);
+
+  const AppContent = () => {
+    const { UsersignedIn } = useUserSign();
+    
+    return (
+      <>
+        {isModifyOpen ? (
+          <>
+            <div className="fixed top-4 right-4 flex gap-2">
+              <button 
+                className="bg-green-400 px-4 py-2 rounded-lg hover:bg-green-500 text-white"
+                onClick={() => setModifyOpen(true)}
+              >
+                Limits
+              </button>
+              <button 
+                className="bg-red-400 px-4 py-2 rounded-lg hover:bg-red-500 text-white"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+            <ModifyMenu close={() => setModifyOpen(false)} />
+          </>
+        ) : UsersignedIn ? (
+          <>
+            <div className="fixed top-4 right-4 flex gap-2">
+              <button 
+                className="bg-blue-400 px-4 py-2 rounded-lg hover:bg-blue-500 text-white"
+                onClick={() => setShowAnalytics(!showAnalytics)}
+              >
+                {showAnalytics ? "Scan QR" : "Analytics"}
+              </button>
+              <button 
+                className="bg-green-400 px-4 py-2 rounded-lg hover:bg-green-500 text-white"
+                onClick={() => setModifyOpen(true)}
+              >
+                Limits
+              </button>
+              <button 
+                className="bg-red-400 px-4 py-2 rounded-lg hover:bg-red-500 text-white"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+            {showAnalytics ? <Analytics /> : <QRScanner openModify={() => setModifyOpen(true)} />}
+          </>
+        ) : (
+          <Auth />
+        )}
+      </>
+    );
+  };
+
   return (
     <UsersignProvider>
       <ErrorProvider>
         <CodeDataProvider>
           <ScanningProvider>
-            <div className="min-h-screen bg-gray-100">
-              <nav className="bg-white shadow-lg">
-                <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end">
-                  <button
-                    onClick={handleLogout}
-                    className="px-4 py-2 text-red-600 hover:text-red-800"
-                  >
-                    Logout
-                  </button>
-                </div>
-              </nav>
-              <AppContent />
+            <div className="flex flex-col gap-10">
+              <div className="min-h-screen flex justify-center items-center">
+                <AppContent />
+              </div>
             </div>
           </ScanningProvider>
         </CodeDataProvider>
